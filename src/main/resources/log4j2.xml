@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info">
+
+    <Properties>
+        <Property name="logPath">./logs/jbground/${date:yyyy}/${date:MM}</Property>
+        <Property name="consoleLayout">[%d{yyyy-MM-dd HH:mm:ss.SSS}] %5p [%t] %c{1.} - %m%n</Property>
+        <Property name="fileLayout">[%d{yyyy-MM-dd HH:mm:ss.SSS}] %5p [%t] [%c] - %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 콜솔 -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${consoleLayout}"/>
+        </Console>
+    </Appenders>
+
+    <loggers>
+        <root level="info" additivity="true">
+            <AppenderRef ref="console"/>
+        </root>
+
+        <Logger name="jdbc.sqlonly" level="info" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+        <Logger name="jdbc" level="WARN" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+    </loggers>
+
+</configuration>
